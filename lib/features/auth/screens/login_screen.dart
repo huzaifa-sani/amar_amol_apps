@@ -76,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onSaved: (value, controller) => entity.username = value,
+                        onSaved: (value, _) => entity.username = value,
                       ),
                       16.height,
 
@@ -97,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                           color: colors.tEXT_subDark,
                           size: 20.w,
                         ),
-                        onChanged: (value) => entity.password = value,
+                        onSaved: (value,_) => entity.password = value,
                       ),
                       12.height,
 
@@ -135,8 +135,11 @@ class LoginScreen extends StatelessWidget {
                             onTap: () {
                               if (formKey.validateAndSave()) {
                                 ckAuth.signIn(
-                                  username: entity.username ?? '',
+                                  account: entity.username ?? '',
                                   password: entity.password ?? '',
+                                  args: {}
+
+
                                 );
                               }
                             },
@@ -153,7 +156,7 @@ class LoginScreen extends StatelessWidget {
                             textColor: colors.tEXT_subDark,
                           ),
                           4.width,
-                          GestureDetector(
+                          InkWell(
                             onTap: () {
                               appRouter.push(const SignUpRoute());
                             },

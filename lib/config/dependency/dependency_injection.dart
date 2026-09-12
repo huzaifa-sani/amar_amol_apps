@@ -7,9 +7,6 @@ GetIt getIt = GetIt.instance;
 class DependencyInjection {
   void dependencies() {
     CoreDependency.dependencies();
-
-    //repositroy
-    // MockRepositoryDependency.dependencies();
     RealRepositoryDependency.dependencies();
   }
 }

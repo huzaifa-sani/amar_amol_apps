@@ -24,8 +24,9 @@ class SignUpScreen extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
                 10.height,
-                // Greeting header
+
                 CkText(
                   text: 'Join Us Today',
                   fontSize: 26,
@@ -33,7 +34,9 @@ class SignUpScreen extends StatelessWidget {
                   textColor: colors.tEXT_white,
                   textAlign: TextAlign.left,
                 ),
+
                 8.height,
+
                 CkText(
                   text:
                       'Create a new account using our production-ready CoreKit modules.',
@@ -200,9 +203,6 @@ class SignUpScreen extends StatelessWidget {
                                         entity.dateOfBirth?.toIso8601String() ??
                                         '',
                                   },
-                                  //assume backend is not send access token and refresh token on signup, send it after login api call
-                                  // this will call login api after signup api call
-                                  // and store access token and refresh token
                                   loginCallback: LoginCallback(
                                     account: entity.email ?? '',
                                     password: entity.password ?? '',

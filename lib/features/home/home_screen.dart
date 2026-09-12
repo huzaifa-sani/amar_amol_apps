@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
         hideBack: true,
         appbarConfig: CkAppBarConfig(
           actions: [
+
             Padding(
               padding: EdgeInsets.symmetric(vertical: 8.h),
               child: CkButton(
@@ -33,6 +34,7 @@ class HomeScreen extends StatelessWidget {
                   ckAuth.logout();
                 },
               ),
+
             ),
           ],
         ),
@@ -125,8 +127,9 @@ class HomeScreen extends StatelessWidget {
             textColor: colors.tEXT_white,
             textAlign: TextAlign.left,
           ),
+
           12.height,
-          // Grid-like cards
+
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
