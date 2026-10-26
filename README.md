@@ -1,100 +1,109 @@
-# Cubit Template
+🕌 Amar Amol Apps
 
-A highly structured, production-ready Flutter template designed for building scalable, responsive, and maintainable applications. It comes pre-configured with **Cubit (Bloc)** for state management, **AutoRoute** for declarative type-safe routing, and **CoreKit** for UI components, networking, and security.
+Amar Amol Apps is a Flutter-based Islamic application designed to help Muslims build good habits, remember Allah, read Hadith, and learn about the Prophets of Islam.
 
----
+✨ Features
+1. 📿 Digital Tasbih Counter
+Count Tasbih and Dhikr.
+Track the number of times a Tasbih is recited.
+Set a target, such as 33, 99, or 100 times.
+Reset the counter when needed.
+Save daily Tasbih counts and view progress.
+Keep a history of completed Dhikr sessions.
+2. 📖 Hadith Reading
+Read Hadith in Bangla, Arabic, and English.
+Browse Hadith by collection and topic.
+View Hadith references and authenticity grades where available.
+Bookmark favorite Hadith.
+Share Hadith with friends and family.
+Save favorite Hadith for offline reading.
+3. 🌙 Daily Amol
+Display daily recommended Islamic practices.
+Maintain a daily checklist of completed Amol.
+Track daily and monthly progress.
+Set personal worship goals.
+View completed and remaining tasks.
+4. 🕋 Names of the Prophets
+Browse the names of the Prophets mentioned in Islamic sources.
+Read biographies and important events from their lives.
+Learn about their teachings and lessons.
+Explore their stories in Bangla.
+Bookmark favorite stories.
+5. 🤲 Dua Collection
+Daily Duas.
+Morning and evening Adhkar.
+Duas before sleeping and after waking up.
+Duas for eating, traveling, and everyday activities.
+Arabic text, Bangla pronunciation, and translation.
+Bookmark and share Duas.
+6. 📊 Personal Amol Dashboard
+Daily Tasbih summary.
+Completed Amol statistics.
+Personal worship goals.
+Daily and monthly progress history.
+Streak tracking to encourage consistency.
+7. 🔔 Reminders
+Custom Tasbih reminders.
+Daily Amol notifications.
+Morning and evening Adhkar reminders.
+Optional prayer-time notifications.
+8. ⭐ Additional Features
+Islamic calendar.
+99 Names of Allah.
+Qibla direction.
+Prayer times based on location.
+Dark mode.
+Bangla and English language support.
+Offline access to saved content.
+🛠️ Technology Stack
+Framework: Flutter
+Language: Dart
+State Management: To be determined
+Local Storage: To be determined
+Backend: Optional, depending on project requirements
+🚀 Getting Started
+Prerequisites
+Flutter SDK
+Dart SDK
+Android Studio or VS Code
+Git
+Installation
+Clone the repository:
+bash
+git clone YOUR_REPOSITORY_URL
 
-## 🚀 Tech Stack & Core Libraries
+Navigate to the project directory:
+bash
+cd amar_amol_apps
 
-- **State Management**: [flutter_bloc](https://pub.dev/packages/flutter_bloc) / **Cubit** for lightweight and robust state management.
-- **Declarative Routing**: [auto_route](https://pub.dev/packages/auto_route) for automated, type-safe navigation, route guards, and deep-linking support.
-- **Core Utility Package**: [core_kit](file:///Users/username/Documents/km%20muzahid/flutter_core_kit) (built-in) which provides:
-  - Responsive screen scaling (`.w`, `.h`, `.sp`, `.r` utilities).
-  - Production-ready UI widgets (`CkButton`, `CkText`, `CkTextField`, `CkAppBar`, etc.).
-  - Robust networking Layer (`CkTransport` based on Dio) with auto-token refresh & request retries.
-  - Secure storage wrapper (`CkStorage` using Keychain/Keystore and fallback).
-  - Fully integrated Authentication module (`CkAuthService` / `ckAuth`).
-- **Dependency Injection**: [get_it](https://pub.dev/packages/get_it) for fast service locator access.
-- **Model Serialization**: [json_serializable](https://pub.dev/packages/json_serializable) for automatic code generation of models.
+Install dependencies:
+bash
+flutter pub get
 
----
+Run the application:
+bash
+flutter run
 
-## 📁 Project Directory Structure
+🎯 Project Goal
 
-```lis
-lib/
-├── config/
-│   ├── api/          # API endpoint declarations
-│   ├── color/        # ThemeColor styling & extensions (Dark/Light configurations)
-│   ├── dependency/   # GetIt locator configurations
-│   ├── route/        # AutoRoute definitions, observers, and navigation guards
-│   ├── theme/        # Custom ThemeData configurations, fonts, and theme-switching Cubits
-│   └── core_kit/     # Modular CoreKit configuration files and AppCoreKitConfig
-│
-├── features/         # Modular feature-by-feature layout
-├── my_app.dart               # Theme setup, MultiBlocProvider setup, and MaterialApp registration
-├── main.dart                 # Application entry point
-```
+The goal of Amar Amol Apps is to help users practice daily Islamic activities, count Dhikr, read authentic Hadith, learn about the Prophets, and maintain consistent worship habits through a simple and user-friendly mobile application.
 
----
+🗺️ Planned Development
+Digital Tasbih counter
+Daily Amol checklist
+Tasbih history and statistics
+Hadith reading section
+Prophets' names and biographies
+Dua collection
+Bookmarks and sharing
+Daily reminders
+Offline content
+Prayer times and Qibla
+Automated testing and CI/CD
+🤝 Contributing
 
-## 🔧 CoreKit Integration
+Contributions, bug reports, and feature suggestions are welcome.
 
-### 1. Bootstrapping Configurations
-`AppCoreKitConfig` extends `CoreKitConfig` and implements all global parameters required for networking, design dimensions, and splash delay:
-- **`appbarConfig`**: Standardized default app bar alignments (e.g., center alignment).
-- **`designSize`**: Base resolution for responsive scaling (default: `428 x 926`).
-- **`ckTransportConfig`**: Base URLs and debug options for API networking.
-- **`authConfig`**: Endpoint mappings and login request body mappings, automatically routing between authentication flows.
+📄 License
 
-### 2. Global Authentication Flow
-The package auto-manages authentication states dynamically:
-- Upon loading, CoreKit checks credentials via `CkAuthService` and invokes handlers defined in `AppCoreKitConfig`:
-  - **`onAuthenticated`**: Invoked on success, redirecting to `HomeRoute()`.
-  - **`showLogin`**: Invoked if credentials are missing or expired, redirecting to `LoginRoute()`.
-
----
-
-## 🛣️ Declarative Routing (AutoRoute)
-
-Routes are defined under `lib/config/route/app_router.dart`. Annotating screen classes with `@RoutePage()` compiles them into router definitions automatically.
-
-### Running Code Generation
-To generate paths and router mappings, run the build runner command:
-```bash
-fvm flutter pub run build_runner build --delete-conflicting-outputs
-```
-
-### Navigating between screens
-Use the global `appRouter` instance to navigate:
-```dart
-appRouter.push(const LoginRoute()); // Navigate forward
-appRouter.replaceAll([const HomeRoute()]); // Clear stack and navigate
-```
-
----
-
-## 📦 State Management Pattern (Cubit)
-
-State management utilizes `SafeCubit` (which prevents emitting states after a controller is disposed) and `CubitScope` to initialize and bind cubits to screen widget lifecycles.
-
-### Usage Example
-```dart
-CubitScope<SplashCubit, bool>(
-  create: () => SplashCubit()..init(),
-  builder: (context, cubit, state) {
-    if (state) {
-      return const CircularProgressIndicator();
-    }
-    return const SizedBox.shrink();
-  },
-);
-```
-
----
-
-## 🎨 Design & Layout Guidelines
-
-- **Theme Extensibility**: Access project colors directly using `context.colors` (extends context with active theme colors, e.g. `context.colors.background`).
-- **Responsive Layouts**: Use `.w` (width), `.h` (height), `.sp` (font size), `.r` (radius) on standard Flutter containers.
-- **Core Widgets**: Prefer standard `Ck` prefixed UI components (`CkText`, `CkButton`, `CkTextField`) to ensure cohesive design tokens, fonts, and styles.
+A license can be added when the project's distribution and reuse terms are decided.
